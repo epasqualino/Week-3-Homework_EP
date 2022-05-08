@@ -11,7 +11,10 @@ var generateBtn = document.querySelector("#generate");
 // var numbers = 
 
 // Variable declaration
-
+// var passwordLength;
+// var passwordLower;
+// var passwordUpper;
+// var passwordSpecial;
 
 // Write password to the #password input
 function writePassword() {
@@ -23,15 +26,20 @@ function writePassword() {
     var passwordLength = window.prompt("How many characters would you like your password to contain?");
   }
 
-  //Choose to include lowercase letters or not
-  var passwordLower = window.prompt("Click OK to confirm including lowercase characters");
-  if(passwordLower === true) {
-    passwordLower = passwordLower.concat(lower);
-  } else if(passwordLower === false) {
-    passwordLower = null;
-  }
+  //Confirm password parameters 
+  var passwordLower = confirm("Click OK to confirm including lowercase characters");
+  var passwordUpper = confirm("Click OK to confirm including uppercase characters");
+  var passwordNumber = confirm("Click OK to confirm including numbers");
+  var passwordSpecial = confirm("Click OK to confirm including special characters");
+  if(passwordLower === false && passwordUpper === fasle && passwordNumber === false && passwordSpecial === fasle) {
+    window.alert("Please choose at least one parameter");
+    var passwordLower = confirm("Click OK to confirm including lowercase characters");
+    var passwordUpper = confirm("Click OK to confirm including uppercase characters");
+    var passwordNumber = confirm("Click OK to confirm including numbers");
+    var passwordSpecial = confirm("Click OK to confirm including special characters");
+  } else {
 
-  //Choose to include upercase letters or not
+  }
 
 
   var password = generatePassword();
