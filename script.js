@@ -31,7 +31,7 @@ function writePassword() {
   var passwordUpper = confirm("Click OK to confirm including uppercase characters");
   var passwordNumber = confirm("Click OK to confirm including numbers");
   var passwordSpecial = confirm("Click OK to confirm including special characters");
-  if(passwordLower === false && passwordUpper === fasle && passwordNumber === false && passwordSpecial === fasle) {
+  if(!passwordLower && !passwordUpper && !passwordNumber && !passwordSpecial) {
     window.alert("Please choose at least one parameter");
     var passwordLower = confirm("Click OK to confirm including lowercase characters");
     var passwordUpper = confirm("Click OK to confirm including uppercase characters");
