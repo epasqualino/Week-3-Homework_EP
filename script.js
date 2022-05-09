@@ -5,16 +5,20 @@
 var generateBtn = document.querySelector("#generate");
 
 //Arrays
-// var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-// var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-// var special = ["~", "!", "?", "+", "*", "<", ">", "&", "$", "#", "%", "@", "^"]
-// var numbers = 
+var lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var special = ["~", "!", "?", "+", "*", "<", ">", "&", "$", "#", "%", "@", "^"];
+var number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // Variable declaration
-// var passwordLength;
+// var enter;
+var passwordLength;
 // var passwordLower;
 // var passwordUpper;
 // var passwordSpecial;
+// var chosen;
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -37,17 +41,44 @@ function writePassword() {
     var passwordUpper = confirm("Click OK to confirm including uppercase characters");
     var passwordNumber = confirm("Click OK to confirm including numbers");
     var passwordSpecial = confirm("Click OK to confirm including special characters");
-  } else {
+  } 
+//LEFT OFF WORKING ON ELSE IF STATEMENTS
+  var password = [];
 
+  if (passwordLower) {
+    password = password.concat(lower);
   }
 
+  if (passwordUpper) {
+    password = password.concat(upper);
+  }
 
-  var password = generatePassword();
+  if (passwordNumber) {
+    password = password.concat(number);
+  }
+
+  if (passwordSpecial) {
+    password = password.concat(special);
+  }
+
+  console.log(password);
+
+  // Put password in text box
+  var showPassword = "";
+
+  for(var i = 0; i < passwordLength; i++) {
+    var showPassword = showPassword + password[Math.floor(Math.random() * password.length)];
+    console.log(showPassword);
+  }
+  return showPassword;
+};
+
+// Event listener to generate button to prompt questions when clicked
+generateBtn.addEventListener("click", function() {
+  var password = writePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+});
 
-}
 
-// Event listener to generate button to prompt questions when clicked
-generateBtn.addEventListener("click", writePassword);
